@@ -3,15 +3,16 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 dotenv.config();
-const app = express();
-app.listen(3000, () => {
-  console.log("server is running");
-});
 mongoose
-  .connect("process.env.MONGO_URI")
+  .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("connected t0 database");
+    console.log("connected to database");
   })
   .catch((err) => {
     console.log(err);
   });
+const app = express();
+
+app.listen(3000, () => {
+  console.log("server is running");
+});
